@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Priya ❤️ Samarth</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Pacifico&display=swap');
+body{
+  margin:0;
+  font-family:'Poppins', sans-serif;
+  background: linear-gradient(135deg,#ff6a88,#ff99ac);
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.card{
+  background:#fff;
+  width:92%;
+  max-width:390px;
+  border-radius:26px;
+  padding:26px 22px;
+  text-align:center;
+  box-shadow:0 30px 60px rgba(0,0,0,.25);
+  animation: pop .9s ease;
+}
+@keyframes pop{
+  from{transform:scale(.6);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+h1{
+  font-family:'Pacifico', cursive;
+  color:#ff4d6d;
+}
+p{color:#444;font-size:15px}
+.btns{margin-top:18px;display:flex;flex-direction:column;gap:12px}
+button{
+  padding:14px;
+  border:none;
+  border-radius:30px;
+  font-size:16px;
+  cursor:pointer;
+  transition:.3s;
+}
+.yes{background:#ff4d6d;color:white}
+.no{background:#adb5bd}
+button:hover{transform:scale(1.05)}
+.slide{display:none}
+.hearts span{
+  position:absolute;
+  bottom:-40px;
+  font-size:22px;
+  animation: float 6s linear infinite;
+}
+@keyframes float{
+  0%{transform:translateY(0);opacity:1}
+  100%{transform:translateY(-110vh);opacity:0}
+}
+img{
+  width:100%;
+  border-radius:18px;
+  margin-top:12px;
+}
+</style>
+</head>
+<body>
+
+<div class="hearts"></div>
+
+<div class="card" id="slide1">
+  <h1>Priya 💖</h1>
+  <p>Will you be my Valentine? 💌</p>
+  <div class="btns">
+    <button class="yes" onclick="showSlide('yes')">Yes 😍</button>
+    <button class="no" id="noBtn">No 🙈</button>
+  </div>
+</div>
+
+<div class="card slide" id="yes">
+  <h1>Forever Us 💕</h1>
+  <p>
+  “तू मेरी आज भी है,<br>
+  तू मेरी कल भी रहेगी।”<br><br>
+  Happy Valentine’s Day Priya ❤️<br>
+  — Samarth
+  </p>
+  <img src="priya_samarth_photo.jpg" alt="Our Moment">
+</div>
+
+<script>
+const noBtn=document.getElementById('noBtn');
+noBtn.addEventListener('mouseover',()=>{
+  const x=Math.random()*220-110;
+  const y=Math.random()*220-110;
+  noBtn.style.transform=`translate(${x}px,${y}px)`;
+});
+function showSlide(id){
+  document.getElementById('slide1').style.display='none';
+  document.getElementById(id).style.display='block';
+}
+const hearts=document.querySelector('.hearts');
+setInterval(()=>{
+  const span=document.createElement('span');
+  span.innerHTML='❤️';
+  span.style.left=Math.random()*100+'vw';
+  span.style.animationDuration=(Math.random()*3+3)+'s';
+  hearts.appendChild(span);
+  setTimeout(()=>span.remove(),6000);
+},350);
+</script>
+
+</body>
+</html>
